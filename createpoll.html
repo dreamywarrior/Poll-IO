@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <button class = "but" name="GoBack" onClick='location.href="optionmenu.php"'>Click Here To Go Back</button>
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+        <script>
+            var count = 2;
+            function add(){
+                if(count < 5){
+                //alert("Add Node");
+                var cln = (document.getElementsByTagName("p")[0]).cloneNode(true);
+                document.getElementsByTagName("p")[1].appendChild(cln);
+                document.getElementsByTagName('input')[9+count].value = '';
+                count += 1;
+                }
+                else{
+                    alert("Max Limit reached!!");
+                }
+            }
+            function remove(){
+                if(count > 2){
+                //alert("Remove Node");
+                document.getElementsByTagName("p")[count-1].remove();
+                count -= 1;
+                }
+                else{
+                alert("Min Limit Reached!!");
+                }
+            }
+            function save(){
+                var choice_count = count;
+                var choice = [];
+                for(var i = 0; i < choice_count; i++){
+                    choice[i] = document.getElementsByTagName("input")[i+9].value;
+                }
+                var txt = "";
+                var pass = '';
+                if(document.getElementById("private").checked){
+                    txt = "private";
+                    var str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                    for (var i = 1; i <= 4; i++) {
+                        var char = Math.floor(Math.random() * str.length + 1);
+                        pass += str.charAt(char)
+                    }
+                }
+                else if(document.getElementById("public").checked){
+                    txt = "public";
+                    pass = "0000";
+                }
+                else{
+                    txt = "public";
+                    pass = "0000";
+                }
+                for(var i = choice_count; i < 5; i++){
+                    choice[i] = "";
+                }
+                document.getElementById("n").defaultValue = choice.toString();
+                document.getElementById("c").defaultValue = count;
+                document.getElementById("t").defaultValue = document.getElementById("title_input").value;
+                document.getElementById("content").defaultValue = document.getElementById("desc_input").value;
+                document.getElementById("mode").defaultValue = txt;
+                document.getElementById("code").defaultValue = pass;
+                document.getElementById("S").click();
+            }
+        </script>
+        <style>
+            html{
+                background-image: url('bg2.jpg');
+            }
+            .poll{
+                margin-left:auto;
+                margin-right: auto;
+                width:max-content;
+                padding: 20px;
+                border-radius:5px;
+                padding-top:0px;
+                margin-top:50px;
+                font-size:18px;
+                border:1px solid black;
+                background-color: rgb(15, 78, 196);
+                color:white;
+                transition: all 0.6s ease;
+            }
+            .poll:hover{
+                box-shadow:1px 1px 0px rgb(0, 2, 131),
+                2px 2px 0px rgb(0, 2, 131),
+                3px 3px 0px rgb(0, 2, 131),
+                4px 4px 0px rgb(0, 2, 131),
+                5px 5px 0px rgb(0, 2, 131),
+                6px 6px 0px rgb(0, 2, 131);
+            }
+            .header{
+                margin-left:auto;
+                margin-right: auto;
+                border-radius:5px;
+                width:30%;
+                text-align: center;
+                padding: 10px;
+                margin-top:-50px;
+                border:1px solid black;
+                background-color: rgb(15, 78, 196);
+                color:white;
+                transition: all 0.6s ease;
+            }
+            input[type = 'text']{
+                width:30%;
+                padding: 10px;
+                border-radius:3px;
+                border:1px solid black;
+                background-color: rgb(105, 140, 204);
+                color:white;
+                transition: all 0.6s ease;
+            }
+            input[type = 'radio']{
+                background-color:rgb(48, 178, 221);
+                box-shadow: 0 0 0 1px #2a5ecf;
+                transition:all 0.6s ease
+            }
+            input[type = 'radio']:hover{
+                box-shadow: 0 0 0 1px #6790e7;
+            }
+            input[type = 'text']:hover{
+                box-shadow:1px 1px 0px rgb(0, 2, 131),
+                2px 2px 0px rgb(0, 2, 131),
+                3px 3px 0px rgb(0, 2, 131),
+                4px 4px 0px rgb(0, 2, 131),
+                5px 5px 0px rgb(0, 2, 131),
+                6px 6px 0px rgb(0, 2, 131);
+            }
+            .header:hover{
+                box-shadow:1px 1px 0px rgb(0, 2, 131),
+                2px 2px 0px rgb(0, 2, 131),
+                3px 3px 0px rgb(0, 2, 131),
+                4px 4px 0px rgb(0, 2, 131),
+                5px 5px 0px rgb(0, 2, 131),
+                6px 6px 0px rgb(0, 2, 131);
+            }
+            button{
+                border:0.5px solid rgb(47, 0, 255);
+                background-color: rgb(43, 86, 226);
+                border-radius:10px;
+                color: white;
+                padding:15px 32px;
+                text-align: center;
+                font-size: 20px;
+                position: relative;
+                border-radius: 15px;
+                margin-right:10px;
+                margin-bottom: 10px;
+                cursor: pointer;
+                display: inline-block;
+                align-items: center;
+                transition: all 0.5s;
+            }
+            button:hover{
+                box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19), 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+            }
+        </style>
+    </head>
+    <body>
+        <form style = "visibility:hidden;" method = "POST" id = "myform" action = "next.php">
+            <input type = "text" id = "n" name = "n">
+            <input type = "text" id = "t" name = "t">
+            <input type = "text" id = "content" name = "content">
+            <input type = "number" id = "c" name = "c">
+            <input type = "text" id = "mode" name = "mode">
+            <input type = "text" id = "code" name = "code">
+            <input type = "submit" id = "S">
+        </form>
+        <div class = "header"><h1>Dynamic poll creation</h1></div>
+        <div class = "poll">
+            <br><br><br>
+            <label for "title">Enter your title here: </label>
+            <input type = "text" value = "Type in here.." id = "title_input" required><br><br>
+            <label for "desc">Type your short description here: </label>
+            <input type = "text" value = "Type in here.." id = "desc_input" required><br><br>
+                <p id = "a">
+                <label for "in">Choice: </label>
+                <input type = "text" id = "in" required>
+                <br>
+                </p>
+                <p id = "a">
+                    <label for "in">Choice: </label>
+                    <input type = "text" id = "in" required>
+                    <br>
+                </p>
+                <div class = "wrapper">
+                <input type = "radio" id = "private" name = "format" value = "Private">
+                <label for ="private">Private</label><br><br>
+                <input type = "radio" id = "public" name = "format" value = "Public">
+                <label for ="public">Public</label><br><br>
+                </div>
+                <button value = "remove" onclick = "remove()">Remove Node</button>
+                <span>   </span>
+                <button value = "add" onclick = "add()">Add Node</button>
+                <span>   </span>
+                <button onclick = "save()">Save Changes</button>
+                <br>
+                <br>
+        </div>
+    </body>
+</html>

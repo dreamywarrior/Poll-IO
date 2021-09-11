@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            html{
+                background-image: url('bg3.jpg');
+                background-position: center;
+
+            }
+            h1{
+                margin-top:250px;
+                font-size:60px;
+                text-align:center;
+                color:yellow;
+                margin-left:auto;
+                margin-right:auto;
+                width:30%;
+                transition: all 0.6s ease;
+            }
+            .but{
+            border:0.5px solid rgb(202, 97, 12);
+            background-color: rgb(240, 151, 34);
+            border-radius:10px;
+            color: white;
+            padding:15px 32px;
+            text-align: center;
+            font-size: 20px;
+            position: relative;
+            border-radius: 15px;
+            
+            margin-bottom: 10px;
+            cursor: pointer;
+            display: inline-block;
+            align-items: center;
+            transition: all 0.5s;
+        }
+        .but:hover{
+            box-shadow:1px 1px 0px rgb(240, 151, 34),
+            2px 2px 0px rgb(240, 151, 34),
+            3px 3px 0px rgb(240, 151, 34),
+            4px 4px 0px rgb(240, 151, 34),
+            5px 5px 0px rgb(240, 151, 34);
+            color:saddlebrown;
+
+        }
+            .holder{
+                margin-left: 670px;
+            }
+            h1:hover{
+                box-shadow:0px 1px 0px rgb(240, 202, 34),
+            0px 2px 0px rgb(240, 202, 34),
+            0px 3px 0px rgb(240, 202, 34); 
+            color:coral;
+            }
+            .divider{
+                width:15px;
+                height:auto;
+                display:inline-block;
+}
+        </style>
+    </head>
+    <body>
+        <h1>POLL io</h1>
+        <br><br>
+        <div class = "holder">
+        <button onclick = "location.href =  'loginpage.html'" class = "but">SignUp/Login</button><div class="divider"></div>
+        <button onclick = "location.href = 'about1.html'" class = "but">About Us</button>
+    </div>
+    <img src= "poll2.png" style = "margin-right:20px;width:200px;height:200px;margin-top:-50px;" alt = "poll1">
+    <img src= "poll1.png" style = "border-radius:10px;margin-left:1200px;width:200px;height:200px;margin-top:-50px;" alt = "poll2">
+    </body>
+</html>
